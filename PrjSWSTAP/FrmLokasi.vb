@@ -32,7 +32,7 @@ Public Class FrmLokasi
     End Sub
     Private Sub GridHeader()
         Dim view As ColumnView = CType(GridControl1.MainView, ColumnView)
-        Dim fieldNames() As String = New String() {"LOKASI", "LOKASI_DESC"}
+        Dim fieldNames() As String = New String() {"WH_CODE", "LOKASI", "LOKASI_DESC"}
         Dim I As Integer
         Dim Column As DevExpress.XtraGrid.Columns.GridColumn
 
@@ -77,7 +77,7 @@ Public Class FrmLokasi
     End Sub
 
     Private Sub LoadView()
-        SQL = "select LOKASI ,LOKASI_DESC from M_LOKASI "
+        SQL = "select WH_CODE, LOKASI ,LOKASI_DESC from M_LOKASI "
         FILLGridView(SQL, GridControl1)
     End Sub
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
@@ -95,7 +95,7 @@ Public Class FrmLokasi
     End Sub
 
     Private Sub FrmMaterialType_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        PanelControl1.Height = Me.Height - 165
+        PanelControl1.Height = Me.Height - 205
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
@@ -108,14 +108,14 @@ Public Class FrmLokasi
                 SQL = "SELECT * FROM M_LOKASI WHERE LOKASI='" & TCode & "'"
                 If CheckRecord(SQL) = 0 Then
                     'INSERT
-                    SQL = "INSERT INTO M_LOKASI (LOKASI,LOKASI_DESC) VALUES ('" & TCode & "','" & TDesc & "')"
+                    SQL = "INSERT INTO M_LOKASI (LOKASI,LOKASI_DESC,WH_CODE) VALUES ('" & TCode & "','" & TDesc & "')"
                     ExecuteNonQuery(SQL)
                     LoadView()
                     MsgBox("SAVE SUCCESSFUL", vbInformation, "LOKASI")
                 Else
                     'UPDATE
                     If UCase(SimpleButton2.Text) = "UPDATE" Then
-                        SQL = "UPDATE M_LOKASI SET LOKASI_DESC='" & TDesc & "' WHERE LOKASI='" & TCode & "'"
+                        SQL = "UPDATE M_LOKASI SET LOKASI_DESC='" & TDesc & "',WH_CODE='" & TextEdit1.Text & "' WHERE LOKASI='" & TCode & "'"
                         ExecuteNonQuery(SQL)
                         LoadView()
                         MsgBox("UPDATE SUCCESSFUL", vbInformation, "LOKASI")
@@ -136,6 +136,7 @@ Public Class FrmLokasi
             SimpleButton3.Enabled = True 'delete
 
             SimpleButton2.Text = "Update" 'save
+            ComboBoxEdit1.Text = GridView1.GetRowCellValue(e.RowHandle, "WH_CODE").ToString() 'MATERIAL TYPE CODE
             TextEdit1.Text = GridView1.GetRowCellValue(e.RowHandle, "LOKASI").ToString() 'MATERIAL TYPE CODE
             TextEdit2.Text = GridView1.GetRowCellValue(e.RowHandle, "LOKASI_DESC").ToString() 'MATERIAL TYPE
 
