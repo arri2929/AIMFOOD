@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/07/2017 06:55:27" ReportInfo.Modified="09/07/2017 10:18:18" ReportInfo.CreatorVersion="2017.1.5.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqZ/XZScXMwzDykDR9BT1SeQ==">
+      <TableDataSource Name="m_lokasi" DataType="System.Int32" Enabled="true" TableName="m_lokasi">
+        <Column Name="LOKASI" DataType="System.String"/>
+        <Column Name="LOKASI_DESC" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="105.5" PaperHeight="296.93" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="261" OtherPagesSource="261" Columns.Count="12" Columns.Width="8.79" Columns.Positions="0,8.79,17.58,26.38,35.17,43.96,52.75,61.54,70.33,79.12,87.92,96.71" Guides="5.67,181.44,34.02,150.02,17.01,170.1">
+    <DataBand Name="Data1" Width="33.23" Height="273.92" Guides="5.67,198.45,34.02,150.02,11.34,28.35,153.09,181.44" DataSource="m_lokasi">
+      <ShapeObject Name="Shape1" Left="5.67" Top="5.67" Width="175.77" Height="192.78"/>
+      <BarcodeObject Name="Barcode1" Left="34.02" Top="34.02" Width="116" Height="116" DataColumn="m_lokasi.LOKASI" ShowText="false" Barcode="QR Code" Barcode.ErrorCorrection="L" Barcode.Encoding="UTF8" Barcode.QuietZone="true"/>
+      <TextObject Name="Text1" Left="5.67" Top="11.34" Width="175.77" Height="17.01" Text="PT AIMFOOD MANUFACTURING INDONESIA" HorzAlign="Center" Font="Arial, 6pt, style=Bold"/>
+      <TextObject Name="Text2" Left="17.01" Top="153.09" Width="153.09" Height="28.35" Text="[m_lokasi.LOKASI_DESC]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="17.01" Top="181.44" Width="153.09" Height="17.01" Text="LOKASI SIMPAN" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <ChildBand Name="Child1" Top="277.92" Width="33.23" Height="7.58"/>
+    </DataBand>
+  </ReportPage>
+</Report>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/07/2017 06:55:27" ReportInfo.Modified="09/07/2017 10:11:14" ReportInfo.CreatorVersion="2017.1.5.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqDCunNc7CpVtnD8T/pFEXWA==">
+      <TableDataSource Name="Table" Alias="R_TAG" DataType="System.Int32" Enabled="true" SelectCommand="SELECT TAGNO,B.ITEM,A.QTY,A.UNIT,A.EXPDATE ,C.LOKASI_DESC&#13;&#10;FROM T_TAG A&#13;&#10;LEFT JOIN M_ITEM B ON A.ITEM_C =B.ITEM_C&#13;&#10;LEFT JOIN M_LOKASI C ON A.LOKASI_L =LOKASI">
+        <Column Name="TAGNO" DataType="System.String"/>
+        <Column Name="ITEM" DataType="System.String"/>
+        <Column Name="QTY" DataType="System.Decimal"/>
+        <Column Name="UNIT" DataType="System.String"/>
+        <Column Name="EXPDATE" DataType="System.DateTime"/>
+        <Column Name="LOKASI_DESC" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="105.06" PaperHeight="296.93" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="261" OtherPagesSource="261" Columns.Count="8" Columns.Width="13.13" Columns.Positions="0,13.13,26.26,39.4,52.53,65.66,78.79,91.93" Guides="5.67,181.44,34.02,150.02,17.01,170.1">
+    <DataBand Name="Data1" Width="49.63" Height="273.92" Guides="5.67,272.16,34.02,150.02,11.34,28.35,153.09,192.78,226.8,255.15" DataSource="Table">
+      <ShapeObject Name="Shape1" Left="5.67" Top="5.67" Width="175.77" Height="266.49"/>
+      <BarcodeObject Name="Barcode1" Left="34.02" Top="34.02" Width="116" Height="116" DataColumn="R_TAG.TAGNO" ShowText="false" Barcode="QR Code" Barcode.ErrorCorrection="L" Barcode.Encoding="UTF8" Barcode.QuietZone="true"/>
+      <TextObject Name="Text1" Left="5.67" Top="11.34" Width="175.77" Height="17.01" Text="PT AIMFOOD MANUFACTURING INDONESIA" HorzAlign="Center" Font="Arial, 6pt, style=Bold"/>
+      <TextObject Name="Text2" Left="17.01" Top="153.09" Width="153.09" Height="39.69" Text="[R_TAG.ITEM]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="17.01" Top="192.78" Width="153.09" Height="34.02" Text="[R_TAG.QTY] [R_TAG.UNIT]" HorzAlign="Center" WordWrap="false" Font="Arial, 14pt, style=Bold" Trimming="EllipsisCharacter">
+        <Formats>
+          <NumberFormat UseLocale="false" DecimalDigits="0" NegativePattern="1"/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text4" Left="17.01" Top="226.8" Width="153.09" Height="28.35" Text="EXPDATE : [R_TAG.EXPDATE]" Format="Date" Format.Format="d" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <ChildBand Name="Child1" Top="277.92" Width="49.63" Height="7.58"/>
+    </DataBand>
+  </ReportPage>
+</Report>
