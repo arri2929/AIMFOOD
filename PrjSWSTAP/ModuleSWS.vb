@@ -1021,10 +1021,10 @@ Module ModuleSWS
         ' load the existing report
         Rpt.Load("..\..\" & nRpt & ".frx")
         'registe parameter
-        Rpt.SetParameterValue("P1", " PT AIMFOOD MANUFACTURING INDONESIA")
-        Rpt.SetParameterValue("P2", " Jalan Selayar Komplek Industri MM2100")
-        Rpt.SetParameterValue("P3", " Cibitung - Jakarta")
-        Rpt.SetParameterValue("P4", " Phone 021-")
+        Rpt.SetParameterValue("P1", Company)
+        Rpt.SetParameterValue("P2", MillPlant)
+        Rpt.SetParameterValue("P3", LocationSite)
+        Rpt.SetParameterValue("P4", StoreLocation1)
         Rpt.SetParameterValue("P5", " ")
         ' register the dataset
         Rpt.RegisterData(Fdss)

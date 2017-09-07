@@ -44,19 +44,11 @@ Public Class FrmConfigurationMenu
     Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         'save
         If Not IsEmptyCombo({ComboBoxEdit1}) Then
-            If Not IsEmptyText({TextEdit1, TextEdit2, TextEdit3, TextEdit4, TextEdit5}) Then
+            If Not IsEmptyText({TextEdit1, TextEdit2}) Then
                 If ComboBoxEdit1.Text = "LOKAL" Then
-                    My.Settings.DBSourceLocal = TextEdit1.Text
+                    My.Settings.nDSN = TextEdit1.Text
                     My.Settings.Save()
-                    My.Settings.DBVerLocal = TextEdit2.Text
-                    My.Settings.Save()
-                    My.Settings.DBNameLocal = TextEdit19.Text
-                    My.Settings.Save()
-                    My.Settings.DBPortLocal = TextEdit3.Text
-                    My.Settings.Save()
-                    My.Settings.DBUserLocal = TextEdit4.Text
-                    My.Settings.Save()
-                    My.Settings.DBPassLocal = TextEdit5.Text
+                    My.Settings.nDATABASENAME = TextEdit2.Text
                     My.Settings.Save()
 
                     CheckConLocal()
@@ -72,14 +64,8 @@ Public Class FrmConfigurationMenu
         End If
     End Sub
     Private Sub LocalConfig()
-        TextEdit1.Text = My.Settings.DBSourceLocal.ToString  'ipadress
-        TextEdit3.Text = My.Settings.DBPortLocal.ToString    'ipport
-
-        TextEdit19.Text = My.Settings.DBNameLocal.ToString     'db name
-        TextEdit2.Text = My.Settings.DBVerLocal.ToString     'version
-
-        TextEdit4.Text = My.Settings.DBUserLocal.ToString    'user
-        TextEdit5.Text = My.Settings.DBPassLocal.ToString    'pass
+        TextEdit1.Text = My.Settings.nDSN.ToString  'DNS
+        TextEdit2.Text = My.Settings.nDATABASENAME.ToString    'DB NAME
     End Sub
     Private Sub CheckConLocal()
         GetConfig()
@@ -168,8 +154,7 @@ Public Class FrmConfigurationMenu
                 " CONNECTION_LOC_PASS='" & CONNECTION_LOC_PASS & "', " +
                 " CONNECTION_LOC_IP='" & CONNECTION_LOC_PASS & "'," +
                 " CONNECTION_LOC_PORT='" & CONNECTION_LOC_PORT & "', " +
-                " CONNECTION_LOC_VER='" & CONNECTION_LOC_VER & "'" +
-                " WHERE CompanyCode ='" & TextEdit4.Text & "'"
+                " CONNECTION_LOC_VER='" & CONNECTION_LOC_VER & "'"
         End If
         ExecuteNonQuery(SQL)
     End Sub
@@ -181,19 +166,11 @@ Public Class FrmConfigurationMenu
     End Sub
     Public Sub LoadConfig()
         TextEdit41.Text = My.MySettings.Default.CompanyCode.Trim.ToString
-        TextEdit40.Text = My.MySettings.Default.Company  'My.Settings.Company
-        TextEdit39.Text = My.MySettings.Default.Millplant
-        TextEdit38.Text = My.MySettings.Default.LocationSite
-        TextEdit37.Text = My.MySettings.Default.StoreLocation1
-        TextEdit36.Text = My.MySettings.Default.StoreLocation2
-        TextEdit35.Text = My.MySettings.Default.ComportSetting
-        ComboBoxEdit6.Text = My.MySettings.Default.WBCode
+        TextEdit40.Text = My.MySettings.Default.Company  'COMPANY
+        TextEdit39.Text = My.MySettings.Default.Millplant 'ADDRESS
+        TextEdit38.Text = My.MySettings.Default.LocationSite 'CITY
+        TextEdit37.Text = My.MySettings.Default.StoreLocation1 'PHONE
 
-        ComboBoxEdit7.Text = My.MySettings.Default.IPCamera1
-        ComboBoxEdit8.Text = My.MySettings.Default.IPCamera2
-        TextEdit31.Text = My.MySettings.Default.IPIndicator
-        ComboBoxEdit3.Text = My.MySettings.Default.LoadingRampTransit
-        ComboBoxEdit4.Text = My.MySettings.Default.SAP
     End Sub
 
     Public Sub SaveConfig()
@@ -207,22 +184,7 @@ Public Class FrmConfigurationMenu
         My.Settings.Save()
         My.Settings.StoreLocation1 = TextEdit37.Text
         My.Settings.Save()
-        My.Settings.StoreLocation2 = TextEdit36.Text
-        My.Settings.Save()
-        My.Settings.ComportSetting = TextEdit35.Text
-        My.Settings.Save()
-        My.Settings.WBCode = ComboBoxEdit6.Text
-        My.Settings.Save()
-        My.Settings.IPCamera1 = ComboBoxEdit7.Text
-        My.Settings.Save()
-        My.Settings.IPCamera2 = ComboBoxEdit8.Text
-        My.Settings.Save()
-        My.Settings.IPIndicator = TextEdit31.Text
-        My.Settings.Save()
-        My.Settings.LoadingRampTransit = ComboBoxEdit3.Text
-        My.Settings.Save()
-        My.Settings.SAP = ComboBoxEdit4.Text
-        My.Settings.Save()
+
     End Sub
 
     Private Sub BackstageViewTabItem1_SelectedChanged(sender As Object, e As DevExpress.XtraBars.Ribbon.BackstageViewItemEventArgs) Handles BackstageViewTabItem1.SelectedChanged
@@ -233,22 +195,7 @@ Public Class FrmConfigurationMenu
         Me.Text = "CONFIGURATION MENU"
         BackstageViewTabItem1.Selected = True
         If TextEdit41.Text <> "" Then LockAll_GConfig()
-        If My.MySettings.Default.SAP.ToString = "Y" Then
-            FillWB()   'LOAD WB
-            FillCctv() 'LOAD CCTV  
-        End If
     End Sub
-    Private Sub FillWB()
-        SQL = "Select DISTINCT NAMA, KDNAMA FROM M_WB ORDER BY KDNAMA"
-        FILLComboBoxEdit(SQL, 0, ComboBoxEdit6, False)
-    End Sub
-    Private Sub FillCctv()
-        SQL = "Select DISTINCT NAMA, KDNAMA FROM M_CCTV ORDER BY KDNAMA"
-        FILLComboBoxEdit(SQL, 0, ComboBoxEdit7, False)
-        FILLComboBoxEdit(SQL, 0, ComboBoxEdit8, False)
-    End Sub
-
-
     Private Sub SimpleButton15_Click(sender As Object, e As EventArgs) Handles SimpleButton15.Click
         'EDIT GENERAL CONFIG
         If TextEdit41.Text = "" Then SimpleButton11.Text = "Update"
@@ -261,14 +208,6 @@ Public Class FrmConfigurationMenu
         TextEdit39.Enabled = True
         TextEdit38.Enabled = True
         TextEdit37.Enabled = True
-        TextEdit36.Enabled = True
-        TextEdit35.Enabled = True
-        ComboBoxEdit6.Enabled = True
-        ComboBoxEdit7.Enabled = True
-        ComboBoxEdit8.Enabled = True
-        TextEdit31.Enabled = True
-        ComboBoxEdit3.Enabled = True
-        ComboBoxEdit4.Enabled = True
         SimpleButton13.Enabled = True 'SAVE
         SimpleButton15.Enabled = False 'EDIT
     End Sub
@@ -279,14 +218,6 @@ Public Class FrmConfigurationMenu
         TextEdit39.Enabled = False
         TextEdit38.Enabled = False
         TextEdit37.Enabled = False
-        TextEdit36.Enabled = False
-        TextEdit35.Enabled = False
-        ComboBoxEdit6.Enabled = False
-        ComboBoxEdit7.Enabled = False
-        ComboBoxEdit8.Enabled = False
-        TextEdit31.Enabled = False
-        ComboBoxEdit3.Enabled = False
-        ComboBoxEdit4.Enabled = False
         SimpleButton13.Enabled = False 'SAVE
         SimpleButton15.Enabled = True 'EDIT
     End Sub
@@ -380,7 +311,6 @@ Public Class FrmConfigurationMenu
     Private Sub SimpleButton7_Click_1(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
-
 
 
 #End Region

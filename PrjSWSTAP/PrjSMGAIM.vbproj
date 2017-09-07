@@ -228,6 +228,12 @@
     <Compile Include="FrmRoleAccesRight.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmRptItem.Designer.vb">
+      <DependentUpon>FrmRptItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRptItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmStock.Designer.vb">
       <DependentUpon>FrmStock.vb</DependentUpon>
     </Compile>
@@ -356,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRoleAccesRight.resx">
       <DependentUpon>FrmRoleAccesRight.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRptItem.resx">
+      <DependentUpon>FrmRptItem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStock.resx">
       <DependentUpon>FrmStock.vb</DependentUpon>

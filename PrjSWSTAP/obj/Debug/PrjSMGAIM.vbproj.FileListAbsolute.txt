@@ -151,3 +151,4 @@ D:\TIMBANGAN\GITHUB\AIMFOOD\PrjSWSTAP\bin\Debug\ru\DevExpress.Xpo.v16.1.resource
 D:\TIMBANGAN\GITHUB\AIMFOOD\PrjSWSTAP\obj\Debug\PrjSWSTAP.FrmImportVCT.resources
 D:\TIMBANGAN\GITHUB\AIMFOOD\PrjSWSTAP\obj\Debug\PrjSWSTAP.FrmStock.resources
 D:\TIMBANGAN\GITHUB\AIMFOOD\PrjSWSTAP\obj\Debug\PrjSWSTAP.FrmClosingPeriode.resources
+D:\TIMBANGAN\GITHUB\AIMFOOD\PrjSWSTAP\obj\Debug\PrjSWSTAP.FrmRptItem.resources
