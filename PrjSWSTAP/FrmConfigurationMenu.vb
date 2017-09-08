@@ -312,6 +312,30 @@ Public Class FrmConfigurationMenu
         Me.Close()
     End Sub
 
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        'TCOMPANY
+        'LSQL TAMBAHKAN DI MODULE SBG PUBLIC 
+
+        LSQL = "SELECT * FROM m_company"
+            LField = "COMPANY_C"
+            ValueLOV = ""
+            TextEdit41.Text = FrmShowLOV(FrmLoV, LSQL, "COMPANY", "COMPANY_C")  'text yang akan di isi
+        If TextEdit41.Text <> "" Then
+            Dim DTC As New DataTable
+            SQL = "SELECT * FROM M_COMPANY WHERE COMPANY_C='" & TextEdit41.Text & "'"
+            DTC = ExecuteQuery(SQL)
+
+            If DTC.Rows.Count > 0 Then
+                TextEdit40.Text = DTC.Rows(0).ItemArray(1).ToString
+                TextEdit39.Text = DTC.Rows(0).ItemArray(2).ToString
+                TextEdit38.Text = DTC.Rows(0).ItemArray(3).ToString
+                TextEdit37.Text = DTC.Rows(0).ItemArray(4).ToString
+
+            End If
+
+        End If
+    End Sub
+
 
 #End Region
 End Class

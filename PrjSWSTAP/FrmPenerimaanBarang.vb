@@ -23,11 +23,36 @@ Public Class FrmPenerimaanBarang
         End If
         Me.Text = nMENUMAIN
         LabelControl21.Text = nMENUMAIN
+
+        SQL = "SELECT DISTINCT JENIS FROM M_ITEM"
+        FILLComboBoxEdit(SQL, 0, ComboBoxEdit1, False)
+
+        SQL = "SELECT DISTINCT UNIT FROM M_ITEM"
+        FILLComboBoxEdit(SQL, 0, ComboBoxEdit2, False)
+
         loadview()
         CreateDtDetail()
 
+        'FORMAT TANGGAL
+        Dim tgl1 As String = ""
+        Dim tgl2 As String = ""
+
+        DateEdit1.Properties.Mask.Culture = New System.Globalization.CultureInfo("en-US")
+        DateEdit1.Properties.Mask.EditMask = "yyyy-MM-dd"
+        DateEdit1.Properties.Mask.UseMaskAsDisplayFormat = True
+        DateEdit1.Properties.CharacterCasing = CharacterCasing.Upper
+        ' tgl1 = date_format(DateEdit1) '('" & DateEdit1.Text & "','yyyy-MM-dd')
+
+        DateEdit2.Properties.Mask.Culture = New System.Globalization.CultureInfo("en-US")
+        DateEdit2.Properties.Mask.EditMask = "yyyy-MM-dd"
+        DateEdit2.Properties.Mask.UseMaskAsDisplayFormat = True
+        DateEdit2.Properties.CharacterCasing = CharacterCasing.Upper
+        'tgl2 = "TO_DATE('" & DateEdit2.Text & "','yyyy-MM-dd')"
+
+
     End Sub
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+
         UnlockAll()
 
         SimpleButton6.Enabled = True
@@ -35,12 +60,17 @@ Public Class FrmPenerimaanBarang
         SimpleButton8.Enabled = True
         LockAllDetail()
 
+
         TextEdit1.Text = GetTAG(nKode)
-        TextEdit2.Text = "1"
         TextEdit1.Enabled = False
         TextEdit2.Enabled = False
 
         UnlockAllDetail()
+
+        SimpleButton1.Enabled = False 'ADD
+        SimpleButton2.Enabled = True  'SAVE
+        SimpleButton3.Enabled = False 'DEL
+
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
@@ -175,7 +205,8 @@ Public Class FrmPenerimaanBarang
         'ADD DT KE GRID DETAIL 
         TextEdit21.Text = "0000" : TextEdit21.Enabled = False
         If Not IsEmptyCombo({ComboBoxEdit1, ComboBoxEdit2}) Then
-            If Not IsEmptyText({TextEdit15, TextEdit16, TextEdit18, TextEdit19}) Then
+            If Not IsEmptyText({TextEdit15, TextEdit16}) Then
+
                 Dim DRDA As DataRow = DTDetail.NewRow
                 DRDA(0) = TextEdit1.Text  'trsmg
                 DRDA(1) = TextEdit15.Text  'item
@@ -183,9 +214,16 @@ Public Class FrmPenerimaanBarang
                 DRDA(3) = ComboBoxEdit2.Text  'unit
                 DRDA(4) = TextEdit21.Text    'lokasi
                 DRDA(5) = TextEdit18.Text  'batch
-                DRDA(6) = TextEdit19.Text  'tagno
+                DRDA(6) = ""  'tagno
                 DTDetail.Rows.Add(DRDA)
                 GridControl2.DataSource = DTDetail
+
+                TextEdit15.Text = ""
+                TextEdit16.Text = ""
+                TextEdit21.Text = ""
+                TextEdit18.Text = ""
+                ComboBoxEdit2.Text = ""
+                DateEdit2.Text = ""
             End If
         End If
     End Sub
@@ -241,6 +279,10 @@ Public Class FrmPenerimaanBarang
             SimpleButton8.Enabled = True 'add
             SimpleButton7.Enabled = False 'save
             SimpleButton6.Enabled = False 'delete
+
+            SimpleButton8.Enabled = True
+            SimpleButton7.Enabled = True
+            SimpleButton6.Enabled = True
         Else
             SimpleButton8.Enabled = False 'add
             SimpleButton7.Enabled = True 'save
@@ -255,6 +297,10 @@ Public Class FrmPenerimaanBarang
             TextEdit21.Text = GridView2.GetRowCellValue(e.RowHandle, "LOKASI").ToString() 'TGL MASUK
 
             UnlockAllDetail()
+            SimpleButton8.Enabled = False
+            SimpleButton7.Enabled = False
+            SimpleButton6.Enabled = False
+
         End If
     End Sub
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
@@ -277,25 +323,49 @@ Public Class FrmPenerimaanBarang
             Dim PENGEIRIM As String = TextEdit13.Text
             Dim DEP_C As String = TextEdit14.Text
 
-            'KALO GW INSERT DETAIL BARU  HEADER
-            'gw insert header dulu baru detail
-            'karna create trsmg_c nya dulu
-            'YO GPP HEHE
-            'GW EMAIL CONTOH ENTRY TRANSAKSI YA.. TINGGAL MODIF (SESUAIKAN TABEL FIELD NYA
-            'DETAIL SAVE DARI GRID KE DB 
-            'HEADER SAVE DARI TEXT INPUT KE DB
-            'UDAH ADA CONTOH TGL HEHE 
 
-            SQL = "SELECT * FROM trsmg WHERE VENDOR_C='" & TRSMG_C & "'"
+            SQL = "SELECT * FROM trsmg WHERE TRSMG_C='" & TRSMG_C & "'"
             If CheckRecord(SQL) = 0 Then
-                'INSERT
+                'INSERT HEADER
                 SQL = "INSERT INTO TRSMG (TRSMG_C,TRSMG_T,REFF,NO_SJ,NO_FAK,NO_PO,TRSMG_DATE,TRANSPORTER_C,VENDOR_C,CUSTOMER_C,NO_VEHICLE,PENERIMA,PENGEIRIM,DEP_C) VALUES ('" & TRSMG_C & "','" & TRSMG_T & "','" & REFF & "','" & NO_SJ & "','" & NO_FAK & "','" & NO_PO & "','" & TRSMG_DATE & "','" & TRANSPORTER_C & "','" & VENDOR_C & "','" & CUSTOMER_C & "','" & NO_VEHICLE & "','" & PENERIMA & "','" & PENGEIRIM & "','" & DEP_C & "')"
                 ExecuteNonQuery(SQL)
+                ' SQL = "UPDATE M_CODE SET URUT = URUT+1 WHERE"
+                'ExecuteNonQuery(SQL)
+                'INSERT DETAIL
+                If GridView2.RowCount > 0 Then
+                    Dim I As Integer
+                    For I = 0 To GridView2.RowCount - 1
+                        'INSERT DETAIL
+                        Dim TRSMGC As String = TextEdit1.Text
+                        Dim ITEM As String = GridView2.GetRowCellValue(I, "ITEM_C").ToString()
+                        Dim QTY As Integer = GridView2.GetRowCellValue(I, "QTY").ToString()
+
+                        If TextEdit2.Text = 2 Then QTY = QTY * -1 ' PENGELUARAN
+
+                        Dim UNIT As String = GridView2.GetRowCellValue(I, "UNIT").ToString()
+                        Dim LOKASI As String = "0000"
+                        Dim BATCH As String = GridView2.GetRowCellValue(I, "BATCH").ToString()
+                        Dim EXPDATE As String = DateEdit2.Text
+
+                        'GET TAG
+                        Dim TAGNO As String = GetTAG("AIM")
+
+                        SQL = " INSERT INTO  TRSMG_DETAIL (TRSMG_C,ITEM_C,QTY,UNIT,LOKASI,BATCH,TAGNO) " +
+                             " VALUES ('" & TRSMGC & "','" & ITEM & "'," & QTY & ",'" & UNIT & "','" & LOKASI & "','" & BATCH & "' ,'" & TAGNO & "') "
+                        ExecuteNonQuery(SQL)
+                        'UPDATE TAG
+
+                        SQL = " INSERT INTO T_TAG (TAGNO, LOKASI_L, ITEM_C, QTY, UNIT, EXPDATE) " +
+                                " VALUES('" & TAGNO & "', '" & LOKASI & "', '" & ITEM & "', " & QTY & ", '" & UNIT & "', '" & EXPDATE & "')"
+
+                        ExecuteNonQuery(SQL)
+                    Next
+                End If
+
                 loadview()
-                SQL = "UPDATE M_CODE SET URUT = URUT+1 WHERE"
                 MsgBox("SAVE SUCCESSFUL", vbInformation, "UNIT")
             Else
-                'UPDATE
+                'UPDATE HEADER
                 If UCase(SimpleButton2.Text) = "UPDATE" Then
                     SQL = "UPDATE TRSMG SET TRSMG_T = '" & TRSMG_T & "',REFF = '" & REFF & "',NO_SJ = '" & NO_SJ & "',NO_FAK ='" & NO_FAK & "',NO_PO = '" & NO_PO & "',TRSMG_DATE = '" & TRSMG_DATE & "',TRANSPORTER_C = '" & TRANSPORTER_C & "',VENDOR_C = '" & VENDOR_C & "',CUSTOMER_C = '" & CUSTOMER_C & "',NO_VEHICLE = '" & NO_VEHICLE & "',PENERIMA ='" & PENERIMA & "',PENGEIRIM = '" & PENGEIRIM & "',DEP_C = '" & DEP_C & "' WHERE TRSMG_C = '" & TRSMG_C & "')"
                     ExecuteNonQuery(SQL)
@@ -312,23 +382,21 @@ Public Class FrmPenerimaanBarang
         'LSQL TAMBAHKAN DI MODULE SBG PUBLIC 
         If Not IsEmptyCombo({ComboBoxEdit1}) = True Then   'JENIS HARUS ADA
             LSQL = "SELECT DISTINCT ITEM_C,ITEM FROM M_ITEM WHERE JENIS='" & ComboBoxEdit1.Text & "' "  '' QUERY INI HARUS EXPIRE DATE TERDEKAT YANG MUNCUL SELAIN ITU TIDAK UNTUK PENGELUARAN
-            LField = "ITEM"
+            LField = "ITEM_C"
             ValueLOV = ""
             TextEdit15.Text = FrmShowLOV(FrmLoV, LSQL, "ITEM_BARANG", "ITEM")  'text yang akan di isi
-            'buat tagno
-            TextEdit19.Text = GetTAG("AIM")
         End If
     End Sub
 
     Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
         If TextEdit2.Text = 1 Then
-            SQL = ""
+            SQL = "SELECT * FROM V_TRSMG WHERE  TRSMG_C='" & TextEdit1.Text & "'"
             ShowReport("rptPermintaan", SQL, "TRIN")
         ElseIf TextEdit2.Text = 2 Then
-            SQL = ""
+            SQL = SQL = "SELECT * FROM V_TRSMG WHERE TRSMG_C='" & TextEdit1.Text & "'"
             ShowReport("rptPengeluaran", SQL, "TROUT")
         ElseIf TextEdit2.Text = 0 Then
-            SQL = ""
+            SQL = SQL = "SELECT * FROM V_TRSMG WHERE  TRSMG_C='" & TextEdit1.Text & "'"
             ShowReport("rptMutasi", SQL, "TRMUTASI")
         End If
     End Sub
@@ -337,4 +405,43 @@ Public Class FrmPenerimaanBarang
         PanelControl1.Height = Me.Height - 430
         GridControl2.Height = PanelControl1.Height - 80
     End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
+        'HAPUS DETAIL
+        If GridView2.RowCount > 0 Then
+            GridView2.DeleteRow(GridView2.FocusedRowHandle)
+        End If
+    End Sub
+
+    Private Sub SimpleButton11_Click(sender As Object, e As EventArgs) Handles SimpleButton11.Click
+        'TRANSPORTER
+        'LSQL TAMBAHKAN DI MODULE SBG PUBLIC 
+        If Not IsEmptyText({TextEdit1}) = True Then   'KODE HARUS ADA
+            LSQL = "SELECT DISTINCT TRANSPORTER_C,TRANSPORTER_N FROM M_TRANSPORTER"  '' QUERY INI HARUS EXPIRE DATE TERDEKAT YANG MUNCUL SELAIN ITU TIDAK UNTUK PENGELUARAN
+            LField = "TRANSPORTER_C"
+            ValueLOV = ""
+            TextEdit8.Text = FrmShowLOV(FrmLoV, LSQL, "TRANSPORTER", "TRANSPORTER")  'text yang akan di isi
+        End If
+    End Sub
+
+    Private Sub SimpleButton12_Click(sender As Object, e As EventArgs) Handles SimpleButton12.Click
+        'VENDOR
+        If Not IsEmptyText({TextEdit1}) = True Then   'KODE HARUS ADA
+            LSQL = "SELECT DISTINCT VENDOR_C,VENDOR_N FROM M_VENDOR"  '' QUERY INI HARUS EXPIRE DATE TERDEKAT YANG MUNCUL SELAIN ITU TIDAK UNTUK PENGELUARAN
+            LField = "VENDOR_C"
+            ValueLOV = ""
+            TextEdit9.Text = FrmShowLOV(FrmLoV, LSQL, "VENDOR", "VENDOR")  'text yang akan di isi
+        End If
+    End Sub
+
+    Private Sub SimpleButton13_Click(sender As Object, e As EventArgs) Handles SimpleButton13.Click
+        'CUSTOMER
+        If Not IsEmptyText({TextEdit1}) = True Then   'KODE HARUS ADA
+            LSQL = "SELECT DISTINCT CUSTOMER_C,CUSTOMER_N FROM M_CUSTOMER"  '' QUERY INI HARUS EXPIRE DATE TERDEKAT YANG MUNCUL SELAIN ITU TIDAK UNTUK PENGELUARAN
+            LField = "CUSTOMER_C"
+            ValueLOV = ""
+            TextEdit10.Text = FrmShowLOV(FrmLoV, LSQL, "CUSTOMER", "CUSTOMER")  'text yang akan di isi
+        End If
+    End Sub
+
 End Class

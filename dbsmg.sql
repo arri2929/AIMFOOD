@@ -59,6 +59,9 @@ CREATE TABLE `m_company` (
 
 /*Data for the table `m_company` */
 
+insert  into `m_company`(`COMPANY_C`,`COMPANY_N`,`ADDRESS`,`CITY`,`STATE`,`PHONE`) values 
+('01','PT AIMFOOD MANUFACTURING INDONESIA','JL.SELAYAR NO 21','CIBITUNG','INDONESIA','021-12345678');
+
 /*Table structure for table `m_customer` */
 
 DROP TABLE IF EXISTS `m_customer`;
@@ -2174,8 +2177,8 @@ insert  into `t_accessrights`(`accessid`,`accessname`,`inactive`,`inactive_date`
 ('0205','USER PROFILE',NULL,NULL,NULL,NULL,NULL,NULL,'0002','1',NULL,'FrmUserProfile',''),
 ('0206','ACCES RIGHT',NULL,NULL,NULL,NULL,NULL,NULL,'0002','1',NULL,'FrmAccessRight',''),
 ('0207','PARAMETER',NULL,NULL,NULL,NULL,NULL,NULL,'0002','1',NULL,'FrmParameter',''),
-('0301','PENERIMAAN BARANG',NULL,NULL,NULL,NULL,NULL,NULL,'0003','1','','',''),
-('0302','PENGELUARAN BARANG',NULL,NULL,NULL,NULL,NULL,NULL,'0003','1','','',''),
+('0301','PENERIMAAN BARANG',NULL,NULL,NULL,NULL,NULL,NULL,'0003','1','','FrmPenerimaanBarang',''),
+('0302','PENGELUARAN BARANG',NULL,NULL,NULL,NULL,NULL,NULL,'0003','1','','FrmPenerimaanBarang',''),
 ('0303','MUTASI BARANG',NULL,NULL,NULL,NULL,NULL,NULL,'0003','1','','',''),
 ('0401','WAREHOUSE',NULL,NULL,NULL,NULL,NULL,NULL,'0004','1','','FrmWH',''),
 ('0402','LOKASI',NULL,NULL,NULL,NULL,NULL,NULL,'0004','1','','FrmLokasi',''),
@@ -2188,6 +2191,7 @@ insert  into `t_accessrights`(`accessid`,`accessname`,`inactive`,`inactive_date`
 ('0409','CUSTOMER',NULL,NULL,NULL,NULL,NULL,NULL,'0004','1','','FrmCust',''),
 ('0410','ITEM',NULL,NULL,NULL,NULL,NULL,NULL,'0004','1','','FrmItem',''),
 ('0501','STOCK ITEM',NULL,NULL,NULL,NULL,NULL,NULL,'0005','1','','',''),
+('0502','MASTER DATA',NULL,NULL,NULL,NULL,NULL,NULL,'0005','1','','FrmRptItem',''),
 ('0601','STOCK ITEM',NULL,NULL,NULL,NULL,NULL,NULL,'0006','1','','FrmStock',''),
 ('0602','IMPORT ITEM',NULL,NULL,NULL,NULL,NULL,NULL,'0006','1','','FrmImportItem',''),
 ('0603','IMPORT VCT',NULL,NULL,NULL,NULL,NULL,NULL,'0006','1','','FrmImportVCT',''),
@@ -2262,6 +2266,7 @@ CREATE TABLE `t_config` (
 /*Data for the table `t_config` */
 
 insert  into `t_config`(`companycode`,`company`,`wbcode`,`wbsetting`,`millplant`,`storeloc1`,`ip_deriver`,`ip_vehicle`,`connection_stg_name`,`connection_stg_user`,`connection_stg_pass`,`connection_loc_name`,`connection_loc_user`,`connection_loc_pass`,`storeloc2`,`ffbcode`,`cpocode`,`pkcode`,`shellcode`,`mm`,`ktu`,`lrt`,`sap`,`connection_stg_ip`,`connection_stg_port`,`connection_stg_ver`,`connection_loc_ip`,`connection_loc_port`,`connection_loc_ver`) values 
+('01','PT AIMFOOD MANUFACTURING INDONESIA','','','JL.SE','INDON','','','','','','','','','','','','','','','','','','','','','','',''),
 ('22','PT TRIPUTRA AGRO PERSADA','WB2','COM1','XX90','ST01','IP1','IP2','SWS','SA','SA','SWS','SWS','SWS','ST02',NULL,NULL,NULL,NULL,NULL,NULL,'Y','Y','127.0.0.1','1521','XE','127.0.0.1','1521','XE');
 
 /*Table structure for table `t_role` */
@@ -2338,6 +2343,7 @@ insert  into `t_roleaccessrights`(`roleid`,`accessid`,`input_by`,`input_date`,`u
 ('3','0411','','0000-00-00 00:00:00',NULL,NULL),
 ('3','0412','','0000-00-00 00:00:00',NULL,NULL),
 ('3','0501','','0000-00-00 00:00:00',NULL,NULL),
+('3','0502','','0000-00-00 00:00:00',NULL,NULL),
 ('3','0601','','0000-00-00 00:00:00',NULL,NULL),
 ('3','0602','','0000-00-00 00:00:00',NULL,NULL),
 ('3','0603','','0000-00-00 00:00:00',NULL,NULL),
@@ -3291,9 +3297,13 @@ CREATE TABLE `t_tag` (
 /*Data for the table `t_tag` */
 
 insert  into `t_tag`(`TAGNO`,`TAGNO_P`,`LOKASI_C`,`LOKASI_L`,`ITEM_C`,`QTY`,`UNIT`,`EXPDATE`) values 
+('',NULL,NULL,'','',0,'','0000-00-00'),
 ('AIM1707000001',NULL,NULL,'A1A','029B158',100,'KG','2017-08-20'),
 ('AIM1707000002',NULL,NULL,'A2A','S013F32',200,'KG','2017-08-22'),
-('AIM1708000003',NULL,NULL,'A1A','029B158',3,'KG','2017-09-01');
+('AIM1708000003',NULL,NULL,'A1A','029B158',3,'KG','2017-09-01'),
+('AIM1708000004',NULL,NULL,'0000','4 Face 1',1,'kg','2017-09-04'),
+('AIM1708000005',NULL,NULL,'0000','S001A048',10,'KG','2017-09-18'),
+('AIM1708000006',NULL,NULL,'0000','S001A048',30,'KG','2017-09-18');
 
 /*Table structure for table `t_userprofile` */
 
@@ -3351,7 +3361,29 @@ insert  into `tloginhistory`(`logindate`,`userid`,`ipaddress`,`remark`,`logoutda
 ('8/20/2017 8:26:27 PM','SA','192.168.1.2','SUCCESS','8/20/2017 10:00:03 PM','N'),
 ('8/20/2017 10:17:28 PM','SA','192.168.1.2','SUCCESS','8/21/2017 12:05:12 AM','N'),
 ('9/7/2017 10:25:16 AM','SA','192.168.1.2','SUCCESS','9/7/2017 10:29:16 AM','N'),
-('9/7/2017 10:34:34 AM','SA','192.168.1.2','SUCCESS','9/7/2017 10:52:02 AM','N');
+('9/7/2017 10:34:34 AM','SA','192.168.1.2','SUCCESS','9/7/2017 10:52:02 AM','N'),
+('9/7/2017 7:57:09 PM','SA','192.168.43.166','SUCCESS','9/7/2017 7:58:46 PM','N'),
+('9/7/2017 9:08:29 PM','SA','192.168.1.2','SUCCESS','9/7/2017 9:11:20 PM','N'),
+('9/7/2017 9:11:29 PM','SA','192.168.1.2','SUCCESS','9/7/2017 9:37:36 PM','N'),
+('9/8/2017 2:45:23 AM','SA','192.168.1.2','SUCCESS','9/8/2017 2:49:47 AM','N'),
+('9/8/2017 3:07:42 AM','SA','192.168.1.2','SUCCESS','9/8/2017 3:09:10 AM','N'),
+('9/8/2017 6:53:51 AM','SA','192.168.1.2','SUCCESS','9/8/2017 7:05:39 AM','N'),
+('9/8/2017 7:07:10 AM','SA','192.168.1.2','SUCCESS','9/8/2017 7:08:29 AM','N'),
+('9/8/2017 7:20:44 AM','SA','192.168.1.2','SUCCESS','9/8/2017 8:25:19 AM','N'),
+('9/8/2017 8:52:29 AM','SA','192.168.1.2','SUCCESS','9/8/2017 8:58:35 AM','N'),
+('9/8/2017 9:13:51 AM','SA','192.168.1.2','SUCCESS','9/8/2017 9:14:44 AM','N'),
+('9/8/2017 9:19:27 AM','SA','192.168.1.2','SUCCESS','9/8/2017 9:24:14 AM','N'),
+('9/8/2017 9:32:59 AM','SA','192.168.1.2','SUCCESS','9/8/2017 9:34:06 AM','N'),
+('9/8/2017 10:51:27 AM','SA','192.168.1.2','SUCCESS','9/8/2017 10:57:59 AM','N'),
+('9/8/2017 11:05:00 AM','SA','192.168.1.2','SUCCESS','9/8/2017 11:11:59 AM','N'),
+('9/8/2017 11:20:10 AM','SA','192.168.1.2','SUCCESS','9/8/2017 11:32:41 AM','N'),
+('9/8/2017 11:37:41 AM','SA','192.168.1.2','SUCCESS','9/8/2017 11:40:32 AM','N'),
+('9/8/2017 11:56:02 AM','SA','192.168.1.2','SUCCESS','9/8/2017 11:57:27 AM','N'),
+('9/8/2017 11:59:45 AM','SA','192.168.1.2','SUCCESS','9/8/2017 12:04:00 PM','N'),
+('9/8/2017 12:24:20 PM','SA','192.168.1.2','SUCCESS','9/8/2017 12:25:05 PM','N'),
+('9/8/2017 12:31:46 PM','SA','192.168.1.2','SUCCESS','9/8/2017 12:43:08 PM','N'),
+('9/8/2017 12:43:42 PM','SA','192.168.1.2','SUCCESS','9/8/2017 12:54:09 PM','N'),
+('9/8/2017 1:01:44 PM','SA','192.168.1.2','SUCCESS','9/8/2017 1:02:59 PM','N');
 
 /*Table structure for table `trsmg` */
 
@@ -3378,8 +3410,9 @@ CREATE TABLE `trsmg` (
 /*Data for the table `trsmg` */
 
 insert  into `trsmg`(`TRSMG_C`,`TRSMG_T`,`REFF`,`NO_SJ`,`NO_FAK`,`NO_PO`,`TRSMG_DATE`,`TRANSPORTER_C`,`VENDOR_C`,`CUSTOMER_C`,`NO_VEHICLE`,`PENERIMA`,`PENGEIRIM`,`DEP_C`) values 
-('TR11708000001','1',NULL,NULL,NULL,NULL,'2017-08-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-('TR21708000002','2',NULL,NULL,NULL,NULL,'2017-08-20',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+('TR11708000001','1',NULL,NULL,NULL,NULL,'2017-08-20','001','001','001',NULL,NULL,NULL,NULL),
+('TR11708000005','1','','','','','2017-09-06','','','','','','',''),
+('TR21708000002','2',NULL,NULL,NULL,NULL,'2017-08-20','001',NULL,'001',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `trsmg_detail` */
 
@@ -3400,7 +3433,8 @@ CREATE TABLE `trsmg_detail` (
 insert  into `trsmg_detail`(`TRSMG_C`,`ITEM_C`,`QTY`,`UNIT`,`LOKASI`,`BATCH`,`TAGNO`) values 
 ('TR11708000001','029B158',100,'KG',NULL,NULL,'AIM1708000001'),
 ('TR11708000001','S013F32',200,'KG',NULL,NULL,'AIM1708000002'),
-('TR21708000002','029B158',-3,'KG',NULL,NULL,'AIM1708000003');
+('TR21708000002','029B158',-3,'KG',NULL,NULL,'AIM1708000003'),
+('TR11708000005','S001A048',30,'KG','0000','','AIM1708000006');
 
 /*Table structure for table `v_menubar` */
 
@@ -3457,6 +3491,35 @@ DROP TABLE IF EXISTS `v_transaksi`;
  `TAGNO` char(14) 
 )*/;
 
+/*Table structure for table `v_trsmg` */
+
+DROP TABLE IF EXISTS `v_trsmg`;
+
+/*!50001 DROP VIEW IF EXISTS `v_trsmg` */;
+/*!50001 DROP TABLE IF EXISTS `v_trsmg` */;
+
+/*!50001 CREATE TABLE  `v_trsmg`(
+ `PERIODE` varchar(7) ,
+ `TANGGAL` date ,
+ `TRANSAKSI` varchar(3) ,
+ `JENIS` char(20) ,
+ `ITEM_C` char(20) ,
+ `ITEM` char(50) ,
+ `QTY` decimal(10,0) ,
+ `UNIT` char(10) ,
+ `TAGNO` char(14) ,
+ `TRSMG_C` char(14) ,
+ `REFF` char(20) ,
+ `NO_SJ` char(50) ,
+ `NO_PO` char(50) ,
+ `NO_VEHICLE` char(20) ,
+ `PENERIMA` char(50) ,
+ `PENGEIRIM` char(50) ,
+ `TRANSPORTER_N` char(50) ,
+ `CUSTOMER_N` char(50) ,
+ `VENDOR_N` char(50) 
+)*/;
+
 /*View structure for view v_menubar */
 
 /*!50001 DROP TABLE IF EXISTS `v_menubar` */;
@@ -3477,6 +3540,13 @@ DROP TABLE IF EXISTS `v_transaksi`;
 /*!50001 DROP VIEW IF EXISTS `v_transaksi` */;
 
 /*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_transaksi` AS (select date_format(`c`.`TRSMG_DATE`,'%Y-%m') AS `PERIODE`,`c`.`TRSMG_DATE` AS `TANGGAL`,(case when (`c`.`TRSMG_T` = 1) then 'IN' when (`c`.`TRSMG_T` = 2) then 'OUT' end) AS `TRANSAKSI`,`b`.`JENIS` AS `JENIS`,`a`.`ITEM_C` AS `ITEM_C`,`b`.`ITEM` AS `ITEM`,`a`.`QTY` AS `QTY`,`a`.`TAGNO` AS `TAGNO` from ((`trsmg_detail` `a` left join `m_item` `b` on((`a`.`ITEM_C` = `b`.`ITEM_C`))) left join `trsmg` `c` on((`a`.`TRSMG_C` = `c`.`TRSMG_C`)))) */;
+
+/*View structure for view v_trsmg */
+
+/*!50001 DROP TABLE IF EXISTS `v_trsmg` */;
+/*!50001 DROP VIEW IF EXISTS `v_trsmg` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_trsmg` AS (select date_format(`c`.`TRSMG_DATE`,'%Y-%m') AS `PERIODE`,`c`.`TRSMG_DATE` AS `TANGGAL`,(case when (`c`.`TRSMG_T` = 1) then 'IN' when (`c`.`TRSMG_T` = 2) then 'OUT' end) AS `TRANSAKSI`,`b`.`JENIS` AS `JENIS`,`a`.`ITEM_C` AS `ITEM_C`,`b`.`ITEM` AS `ITEM`,`a`.`QTY` AS `QTY`,`a`.`UNIT` AS `UNIT`,`a`.`TAGNO` AS `TAGNO`,`c`.`TRSMG_C` AS `TRSMG_C`,`c`.`REFF` AS `REFF`,`c`.`NO_SJ` AS `NO_SJ`,`c`.`NO_PO` AS `NO_PO`,`c`.`NO_VEHICLE` AS `NO_VEHICLE`,`c`.`PENERIMA` AS `PENERIMA`,`c`.`PENGEIRIM` AS `PENGEIRIM`,`e`.`TRANSPORTER_N` AS `TRANSPORTER_N`,`d`.`CUSTOMER_N` AS `CUSTOMER_N`,`f`.`VENDOR_N` AS `VENDOR_N` from (((((`trsmg_detail` `a` left join `m_item` `b` on((`a`.`ITEM_C` = `b`.`ITEM_C`))) left join `trsmg` `c` on((`a`.`TRSMG_C` = `c`.`TRSMG_C`))) left join `m_customer` `d` on((`d`.`CUSTOMER_C` = `c`.`CUSTOMER_C`))) left join `m_transporter` `e` on((`e`.`TRANSPORTER_C` = `c`.`TRANSPORTER_C`))) left join `m_vendor` `f` on((`f`.`VENDOR_C` = `c`.`VENDOR_C`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

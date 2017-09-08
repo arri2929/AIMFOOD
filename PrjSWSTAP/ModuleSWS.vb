@@ -139,6 +139,8 @@ Module ModuleSWS
 
 #Region "General Config"
     Public Sub GetConfig()
+
+
         CompanyCode = My.Settings.CompanyCode.ToString
         Company = My.Settings.Company.ToString
         LocationSite = My.Settings.LocationSite.ToString
@@ -1027,6 +1029,14 @@ Module ModuleSWS
             .CommandText = queryString
             .CommandType = CommandType.Text
         End With
+
+        ''TextEdit41.Text = My.MySettings.Default.CompanyCode.Trim.ToString
+        'Companyt = My.MySettings.Default.Company  'COMPANY
+        'TextEdit39.Text = My.MySettings.Default.Millplant 'ADDRESS
+        'TextEdit38.Text = My.MySettings.Default.LocationSite 'CITY
+        'TextEdit37.Text = My.MySettings.Default.StoreLocation1 'PHONE
+        GetConfig()
+
         Da.SelectCommand = Cmd
         'fill data to dataset
         Da.Fill(Fdss, nTabelRpt)

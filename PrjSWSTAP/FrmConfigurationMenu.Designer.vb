@@ -40,6 +40,7 @@ Partial Class FrmConfigurationMenu
         Me.LabelControl44 = New DevExpress.XtraEditors.LabelControl()
         Me.BackstageViewClientControl2 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl5 = New DevExpress.XtraEditors.PanelControl()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
@@ -100,7 +101,7 @@ Partial Class FrmConfigurationMenu
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.PictureEdit3 = New DevExpress.XtraEditors.PictureEdit()
         Me.BackstageViewTabItem3 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
-        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.BackstageViewControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BackstageViewControl1.SuspendLayout()
         Me.BackstageViewClientControl1.SuspendLayout()
@@ -115,6 +116,7 @@ Partial Class FrmConfigurationMenu
         Me.BackstageViewClientControl2.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl5.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,7 +146,6 @@ Partial Class FrmConfigurationMenu
         Me.BackstageViewClientControl5.SuspendLayout()
         Me.BunifuGradientPanel1.SuspendLayout()
         CType(Me.PictureEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BackstageViewControl1
@@ -178,6 +179,7 @@ Partial Class FrmConfigurationMenu
         '
         'BackstageViewClientControl1
         '
+        Me.BackstageViewClientControl1.Controls.Add(Me.SimpleButton6)
         Me.BackstageViewClientControl1.Controls.Add(Me.TextEdit37)
         Me.BackstageViewClientControl1.Controls.Add(Me.TextEdit38)
         Me.BackstageViewClientControl1.Controls.Add(Me.TextEdit39)
@@ -226,7 +228,7 @@ Partial Class FrmConfigurationMenu
         Me.TextEdit41.Location = New System.Drawing.Point(160, 46)
         Me.TextEdit41.Name = "TextEdit41"
         Me.TextEdit41.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.TextEdit41.Size = New System.Drawing.Size(271, 20)
+        Me.TextEdit41.Size = New System.Drawing.Size(240, 20)
         Me.TextEdit41.TabIndex = 55
         '
         'PanelControl11
@@ -364,6 +366,13 @@ Partial Class FrmConfigurationMenu
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(554, 489)
         Me.PanelControl1.TabIndex = 9
+        '
+        'TextEdit2
+        '
+        Me.TextEdit2.Location = New System.Drawing.Point(5, 90)
+        Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Size = New System.Drawing.Size(236, 20)
+        Me.TextEdit2.TabIndex = 50
         '
         'PanelControl5
         '
@@ -983,12 +992,13 @@ Partial Class FrmConfigurationMenu
         Me.BackstageViewTabItem3.Name = "BackstageViewTabItem3"
         Me.BackstageViewTabItem3.Selected = False
         '
-        'TextEdit2
+        'SimpleButton6
         '
-        Me.TextEdit2.Location = New System.Drawing.Point(5, 90)
-        Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(236, 20)
-        Me.TextEdit2.TabIndex = 50
+        Me.SimpleButton6.Location = New System.Drawing.Point(406, 47)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.Size = New System.Drawing.Size(25, 19)
+        Me.SimpleButton6.TabIndex = 60
+        Me.SimpleButton6.Text = "SimpleButton6"
         '
         'FrmConfigurationMenu
         '
@@ -1015,6 +1025,7 @@ Partial Class FrmConfigurationMenu
         Me.BackstageViewClientControl2.ResumeLayout(False)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl5.ResumeLayout(False)
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1047,7 +1058,6 @@ Partial Class FrmConfigurationMenu
         Me.BunifuGradientPanel1.ResumeLayout(False)
         Me.BunifuGradientPanel1.PerformLayout()
         CType(Me.PictureEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1132,5 +1142,6 @@ Partial Class FrmConfigurationMenu
     Friend WithEvents TextEdit7 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEdit8 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
     '    Friend WithEvents VlcControl1 As Vlc.DotNet.Forms.VlcControl
 End Class

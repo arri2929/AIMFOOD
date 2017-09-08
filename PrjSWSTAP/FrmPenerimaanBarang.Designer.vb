@@ -88,6 +88,11 @@ Partial Class FrmPenerimaanBarang
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl18 = New DevExpress.XtraEditors.LabelControl()
         Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton12 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton13 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl22 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
         Me.BunifuGradientPanel2.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,6 +129,8 @@ Partial Class FrmPenerimaanBarang
         CType(Me.TextEdit16.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
+        CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl89
@@ -466,6 +473,8 @@ Partial Class FrmPenerimaanBarang
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.DateEdit2)
+        Me.PanelControl1.Controls.Add(Me.LabelControl22)
         Me.PanelControl1.Controls.Add(Me.GridControl2)
         Me.PanelControl1.Controls.Add(Me.TextEdit21)
         Me.PanelControl1.Controls.Add(Me.TextEdit18)
@@ -510,9 +519,10 @@ Partial Class FrmPenerimaanBarang
         '
         'TextEdit21
         '
-        Me.TextEdit21.Location = New System.Drawing.Point(878, 21)
+        Me.TextEdit21.Location = New System.Drawing.Point(992, 21)
         Me.TextEdit21.Name = "TextEdit21"
-        Me.TextEdit21.Size = New System.Drawing.Size(158, 20)
+        Me.TextEdit21.Properties.ReadOnly = True
+        Me.TextEdit21.Size = New System.Drawing.Size(42, 20)
         Me.TextEdit21.TabIndex = 242
         '
         'TextEdit18
@@ -524,16 +534,17 @@ Partial Class FrmPenerimaanBarang
         '
         'TextEdit19
         '
-        Me.TextEdit19.Location = New System.Drawing.Point(730, 21)
+        Me.TextEdit19.Location = New System.Drawing.Point(860, 21)
         Me.TextEdit19.Name = "TextEdit19"
-        Me.TextEdit19.Size = New System.Drawing.Size(145, 20)
+        Me.TextEdit19.Properties.ReadOnly = True
+        Me.TextEdit19.Size = New System.Drawing.Size(126, 20)
         Me.TextEdit19.TabIndex = 244
         '
         'LabelControl19
         '
         Me.LabelControl19.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.LabelControl19.Appearance.Options.UseFont = True
-        Me.LabelControl19.Location = New System.Drawing.Point(730, 5)
+        Me.LabelControl19.Location = New System.Drawing.Point(860, 6)
         Me.LabelControl19.Name = "LabelControl19"
         Me.LabelControl19.Size = New System.Drawing.Size(35, 13)
         Me.LabelControl19.TabIndex = 239
@@ -553,7 +564,7 @@ Partial Class FrmPenerimaanBarang
         '
         Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.LabelControl13.Appearance.Options.UseFont = True
-        Me.LabelControl13.Location = New System.Drawing.Point(878, 5)
+        Me.LabelControl13.Location = New System.Drawing.Point(992, 5)
         Me.LabelControl13.Name = "LabelControl13"
         Me.LabelControl13.Size = New System.Drawing.Size(36, 13)
         Me.LabelControl13.TabIndex = 237
@@ -593,7 +604,7 @@ Partial Class FrmPenerimaanBarang
         Me.SimpleButton9.Appearance.Options.UseForeColor = True
         Me.SimpleButton9.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
         Me.SimpleButton9.Image = CType(resources.GetObject("SimpleButton9.Image"), System.Drawing.Image)
-        Me.SimpleButton9.Location = New System.Drawing.Point(376, 17)
+        Me.SimpleButton9.Location = New System.Drawing.Point(376, 12)
         Me.SimpleButton9.Name = "SimpleButton9"
         Me.SimpleButton9.Size = New System.Drawing.Size(28, 27)
         Me.SimpleButton9.TabIndex = 228
@@ -800,11 +811,74 @@ Partial Class FrmPenerimaanBarang
         Me.SimpleButton10.TabIndex = 244
         Me.SimpleButton10.Text = "Cetak Dokumen"
         '
+        'SimpleButton11
+        '
+        Me.SimpleButton11.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.SimpleButton11.Appearance.ForeColor = System.Drawing.Color.Green
+        Me.SimpleButton11.Appearance.Options.UseFont = True
+        Me.SimpleButton11.Appearance.Options.UseForeColor = True
+        Me.SimpleButton11.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.SimpleButton11.Image = CType(resources.GetObject("SimpleButton11.Image"), System.Drawing.Image)
+        Me.SimpleButton11.Location = New System.Drawing.Point(794, 88)
+        Me.SimpleButton11.Name = "SimpleButton11"
+        Me.SimpleButton11.Size = New System.Drawing.Size(28, 20)
+        Me.SimpleButton11.TabIndex = 245
+        '
+        'SimpleButton12
+        '
+        Me.SimpleButton12.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.SimpleButton12.Appearance.ForeColor = System.Drawing.Color.Green
+        Me.SimpleButton12.Appearance.Options.UseFont = True
+        Me.SimpleButton12.Appearance.Options.UseForeColor = True
+        Me.SimpleButton12.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.SimpleButton12.Image = CType(resources.GetObject("SimpleButton12.Image"), System.Drawing.Image)
+        Me.SimpleButton12.Location = New System.Drawing.Point(793, 110)
+        Me.SimpleButton12.Name = "SimpleButton12"
+        Me.SimpleButton12.Size = New System.Drawing.Size(28, 20)
+        Me.SimpleButton12.TabIndex = 246
+        '
+        'SimpleButton13
+        '
+        Me.SimpleButton13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.SimpleButton13.Appearance.ForeColor = System.Drawing.Color.Green
+        Me.SimpleButton13.Appearance.Options.UseFont = True
+        Me.SimpleButton13.Appearance.Options.UseForeColor = True
+        Me.SimpleButton13.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.SimpleButton13.Image = CType(resources.GetObject("SimpleButton13.Image"), System.Drawing.Image)
+        Me.SimpleButton13.Location = New System.Drawing.Point(793, 132)
+        Me.SimpleButton13.Name = "SimpleButton13"
+        Me.SimpleButton13.Size = New System.Drawing.Size(28, 20)
+        Me.SimpleButton13.TabIndex = 247
+        '
+        'LabelControl22
+        '
+        Me.LabelControl22.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl22.Appearance.Options.UseFont = True
+        Me.LabelControl22.Location = New System.Drawing.Point(732, 6)
+        Me.LabelControl22.Name = "LabelControl22"
+        Me.LabelControl22.Size = New System.Drawing.Size(46, 13)
+        Me.LabelControl22.TabIndex = 246
+        Me.LabelControl22.Text = "Expdate"
+        '
+        'DateEdit2
+        '
+        Me.DateEdit2.EditValue = Nothing
+        Me.DateEdit2.Location = New System.Drawing.Point(732, 21)
+        Me.DateEdit2.Name = "DateEdit2"
+        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.Mask.EditMask = "yyyy-MM-dd"
+        Me.DateEdit2.Size = New System.Drawing.Size(122, 20)
+        Me.DateEdit2.TabIndex = 247
+        '
         'FrmPenerimaanBarang
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1259, 605)
+        Me.Controls.Add(Me.SimpleButton13)
+        Me.Controls.Add(Me.SimpleButton12)
+        Me.Controls.Add(Me.SimpleButton11)
         Me.Controls.Add(Me.SimpleButton10)
         Me.Controls.Add(Me.LabelControl18)
         Me.Controls.Add(Me.PanelControl3)
@@ -871,6 +945,8 @@ Partial Class FrmPenerimaanBarang
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
         Me.PanelControl3.PerformLayout()
+        CType(Me.DateEdit2.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -940,4 +1016,9 @@ Partial Class FrmPenerimaanBarang
     Friend WithEvents LabelControl21 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl18 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SimpleButton10 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton12 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton13 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents DateEdit2 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents LabelControl22 As DevExpress.XtraEditors.LabelControl
 End Class

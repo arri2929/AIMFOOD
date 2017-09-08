@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/08/2017 09:50:37" ReportInfo.Modified="09/08/2017 13:54:29" ReportInfo.CreatorVersion="2017.1.5.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqSujnuCEiv3u4682mtGE62g==">
+      <TableDataSource Name="Table" Alias="TRIN" DataType="System.Int32" Enabled="true" SelectCommand="SELECT * FROM V_TRSMG">
+        <Column Name="PERIODE" DataType="System.String"/>
+        <Column Name="TANGGAL" DataType="System.DateTime"/>
+        <Column Name="TRANSAKSI" DataType="System.String"/>
+        <Column Name="JENIS" DataType="System.String"/>
+        <Column Name="ITEM_C" DataType="System.String"/>
+        <Column Name="ITEM" DataType="System.String"/>
+        <Column Name="QTY" DataType="System.Decimal"/>
+        <Column Name="TAGNO" DataType="System.String"/>
+        <Column Name="TRSMG_C" DataType="System.String"/>
+        <Column Name="REFF" DataType="System.String"/>
+        <Column Name="NO_SJ" DataType="System.String"/>
+        <Column Name="NO_PO" DataType="System.String"/>
+        <Column Name="NO_VEHICLE" DataType="System.String"/>
+        <Column Name="PENERIMA" DataType="System.String"/>
+        <Column Name="PENGEIRIM" DataType="System.String"/>
+        <Column Name="TRANSPORTER_N" DataType="System.String"/>
+        <Column Name="CUSTOMER_N" DataType="System.String"/>
+        <Column Name="VENDOR_N" DataType="System.String"/>
+        <Column Name="UNIT" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+    <Parameter Name="P1" DataType="System.String"/>
+    <Parameter Name="P2" DataType="System.String"/>
+    <Parameter Name="P3" DataType="System.String"/>
+    <Parameter Name="P4" DataType="System.String"/>
+    <Parameter Name="P5" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Guides="5.67,102.06,498.96,691.74,17.01,419.58,113.4,62.37,549.99,22.68,289.17,68.04,181.44">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="22.68" Guides="5.67,22.68">
+      <TextObject Name="Text1" Left="5.67" Top="5.67" Width="96.39" Height="17.01" Text="TRANSAKSI" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text10" Left="498.96" Top="5.67" Width="192.78" Height="17.01" Text="Periode [TRIN.PERIODE]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="26.68" Width="718.2" Height="181.44" Guides="0,17.01,51.03,68.04,85.05,34.02,124.74,141.75,147.42,164.43,102.06,119.07,181.44,136.08">
+      <TextObject Name="Text2" Left="17.01" Width="402.57" Height="17.01" Text="[P1]" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="17.01" Top="17.01" Width="402.57" Height="34.02" Text="[P2]" Font="Arial, 9pt"/>
+      <TextObject Name="Text5" Left="17.01" Top="51.03" Width="402.57" Height="17.01" Text="[P3]" Font="Arial, 9pt"/>
+      <TextObject Name="Text7" Left="17.01" Top="68.04" Width="96.39" Height="17.01" Text="[P4]" Font="Arial, 9pt"/>
+      <TextObject Name="Text11" Left="498.96" Width="192.78" Height="17.01" Text="No. Transaksi  : [TRIN.TAGNO]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text12" Left="498.96" Top="17.01" Width="192.78" Height="17.01" Text="Reff .[TRIN.REFF]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text13" Left="498.96" Top="34.02" Width="192.78" Height="17.01" Text="Surat Jalan [TRIN.NO_SJ]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text14" Left="498.96" Top="51.03" Width="192.78" Height="17.01" Text="PO No. [TRIN.NO_PO]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text15" Left="498.96" Top="68.04" Width="192.78" Height="17.01" Text="Tanggal [TRIN.TANGGAL]" Format="Date" Format.Format="d" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text16" Left="498.96" Top="124.74" Width="192.78" Height="17.01" Text="No Kendaraan [TRIN.NO_VEHICLE]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text21" Left="17.01" Top="147.42" Width="402.57" Height="17.01" Text="Telah diterima Barang dengan Rincian sebagai berikut:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text29" Left="498.96" Top="102.06" Width="192.78" Height="17.01" Text="Transporter [TRIN.TRANSPORTER_N]" HorzAlign="Right" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text26" Left="17.01" Top="164.43" Width="45.36" Height="17.01" Border.Lines="All" Text="No" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text22" Left="62.37" Top="164.43" Width="357.21" Height="17.01" Border.Lines="All" Text="Barang" HorzAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text23" Left="419.58" Top="164.43" Width="79.38" Height="17.01" Border.Lines="All" Text="Qty" HorzAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text24" Left="498.96" Top="164.43" Width="51.03" Height="17.01" Border.Lines="All" Text="Unit" HorzAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text25" Left="549.99" Top="164.43" Width="141.75" Height="17.01" Border.Lines="All" Text="Jenis Barang" HorzAlign="Center" Font="Arial, 9pt, style=Bold"/>
+      <TextObject Name="Text28" Left="22.68" Top="102.06" Width="266.49" Height="17.01" Text="Vendor [TRIN.VENDOR_N]" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text30" Left="22.68" Top="119.07" Width="266.49" Height="17.01" Text="Customer. [TRIN.CUSTOMER_N]" Font="Arial, 8pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="212.12" Width="718.2" Height="17.01" Guides="0,17.01" DataSource="Table">
+      <TextObject Name="Text27" Left="17.01" Width="51.03" Height="17.01" Text="[Row#]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" Font="Arial, 8pt"/>
+      <TextObject Name="Text8" Left="68.04" Width="351.54" Height="17.01" Text="[TRIN.ITEM]" Font="Arial, 8pt"/>
+      <TextObject Name="Text6" Left="498.96" Width="51.03" Height="17.01" Text="[TRIN.UNIT]" HorzAlign="Center" Font="Arial, 8pt"/>
+      <TextObject Name="Text9" Left="419.58" Width="79.38" Height="17.01" Text="[TRIN.QTY]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Center" WordWrap="false" Font="Arial, 8pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text3" Left="549.99" Width="141.75" Height="17.01" Text="[TRIN.JENIS]" HorzAlign="Center" Font="Arial, 8pt"/>
+    </DataBand>
+    <ColumnFooterBand Name="ColumnFooter1" Top="233.13" Width="718.2" Height="71.82" Guides="0,17.01,51.03,68.04">
+      <TextObject Name="Text18" Left="62.37" Width="119.07" Height="17.01" Text="Penerima" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text19" Left="419.58" Width="130.41" Height="17.01" Text="Pengirim" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text20" Left="419.58" Top="51.03" Width="130.41" Height="17.01" Border.Lines="Bottom" Text="[TRIN.PENGEIRIM]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text17" Left="62.37" Top="51.03" Width="119.07" Height="17.01" Border.Lines="Bottom" Text="[TRIN.PENERIMA]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+    </ColumnFooterBand>
+    <PageFooterBand Name="PageFooter1" Top="308.95" Width="718.2" Height="98.28"/>
+  </ReportPage>
+</Report>
