@@ -111,7 +111,7 @@ Public Class FrmMain
                     If CurrGroup.Caption.ToString <> "HOME" Then NavBarControl1.Groups(I).Visible = False 'BIKIN VISIBLE GROUP
                 Next
             Next
-            nMENUMAIN = NavBarControl1.CanSelect.ToString()
+            nMENUMAIN = ""
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally

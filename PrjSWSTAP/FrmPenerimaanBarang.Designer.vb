@@ -41,6 +41,7 @@ Partial Class FrmPenerimaanBarang
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
@@ -86,7 +87,6 @@ Partial Class FrmPenerimaanBarang
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl18 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
         Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
         Me.BunifuGradientPanel2.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,9 +134,9 @@ Partial Class FrmPenerimaanBarang
         Me.LabelControl89.Appearance.Options.UseForeColor = True
         Me.LabelControl89.Location = New System.Drawing.Point(12, 15)
         Me.LabelControl89.Name = "LabelControl89"
-        Me.LabelControl89.Size = New System.Drawing.Size(81, 14)
+        Me.LabelControl89.Size = New System.Drawing.Size(71, 14)
         Me.LabelControl89.TabIndex = 0
-        Me.LabelControl89.Text = "PENERIMAAN"
+        Me.LabelControl89.Text = "TRANSAKSI"
         '
         'BunifuGradientPanel2
         '
@@ -281,6 +281,20 @@ Partial Class FrmPenerimaanBarang
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(153, 403)
         Me.Panel10.TabIndex = 213
+        '
+        'LabelControl21
+        '
+        Me.LabelControl21.Appearance.BackColor = System.Drawing.Color.CadetBlue
+        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl21.Appearance.Options.UseBackColor = True
+        Me.LabelControl21.Appearance.Options.UseFont = True
+        Me.LabelControl21.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.LabelControl21.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.LabelControl21.Location = New System.Drawing.Point(0, 390)
+        Me.LabelControl21.Name = "LabelControl21"
+        Me.LabelControl21.Size = New System.Drawing.Size(153, 13)
+        Me.LabelControl21.TabIndex = 244
+        Me.LabelControl21.Text = "PERMINTAAN"
         '
         'LabelControl10
         '
@@ -684,7 +698,7 @@ Partial Class FrmPenerimaanBarang
         Me.PanelControl3.Controls.Add(Me.LabelControl9)
         Me.PanelControl3.Location = New System.Drawing.Point(400, 83)
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(152, 179)
+        Me.PanelControl3.Size = New System.Drawing.Size(152, 161)
         Me.PanelControl3.TabIndex = 242
         '
         'LabelControl11
@@ -770,20 +784,6 @@ Partial Class FrmPenerimaanBarang
         Me.LabelControl18.Size = New System.Drawing.Size(1106, 18)
         Me.LabelControl18.TabIndex = 243
         Me.LabelControl18.Text = "Detail Barang"
-        '
-        'LabelControl21
-        '
-        Me.LabelControl21.Appearance.BackColor = System.Drawing.Color.CadetBlue
-        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl21.Appearance.Options.UseBackColor = True
-        Me.LabelControl21.Appearance.Options.UseFont = True
-        Me.LabelControl21.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl21.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LabelControl21.Location = New System.Drawing.Point(0, 390)
-        Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(153, 13)
-        Me.LabelControl21.TabIndex = 244
-        Me.LabelControl21.Text = "PERMINTAAN"
         '
         'SimpleButton10
         '

@@ -6,6 +6,7 @@ Public Class FrmPenerimaanBarang
     Private Sub FrmPenerimaanBarang_Load(sender As Object, e As EventArgs) Handles Me.Load
         LockAll()
         LockAllDetail()
+
         SimpleButton6.Enabled = False
         SimpleButton7.Enabled = False
         SimpleButton8.Enabled = False
@@ -55,7 +56,7 @@ Public Class FrmPenerimaanBarang
     End Sub
 
     Private Sub loadview()
-        SQL = "select TRSMG_C,TRSMG_T,REFF,NO_SJ,NO_FAK,NO_PO,TRSMG_DATE,TRANSPORTER_C,VENDOR_C,CUSTOMER_C,NO_VEHICLE,PENERIMA,PENGEIRIM,DEP_C from trsmg"
+        SQL = "select TRSMG_C,TRSMG_T,REFF,NO_SJ,NO_FAK,NO_PO,TRSMG_DATE,TRANSPORTER_C,VENDOR_C,CUSTOMER_C,NO_VEHICLE,PENERIMA,PENGEIRIM,DEP_C from trsmg WHERE TRSMG_T='" & Trim(TextEdit2.Text) & "'"
         FILLGridView(SQL, GridControl1)
     End Sub
     Private Sub LoadView1()
@@ -330,5 +331,10 @@ Public Class FrmPenerimaanBarang
             SQL = ""
             ShowReport("rptMutasi", SQL, "TRMUTASI")
         End If
+    End Sub
+
+    Private Sub FrmPenerimaanBarang_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        PanelControl1.Height = Me.Height - 430
+        GridControl2.Height = PanelControl1.Height - 80
     End Sub
 End Class
