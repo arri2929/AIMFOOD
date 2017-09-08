@@ -24,6 +24,7 @@ Partial Class FrmParameter
         Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
@@ -36,7 +37,6 @@ Partial Class FrmParameter
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.BackstageViewTabItem2 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.BunifuGradientPanel2 = New ns1.BunifuGradientPanel()
         Me.LabelControl89 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.BackstageViewControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,6 +95,20 @@ Partial Class FrmParameter
         Me.TextEdit1.Name = "TextEdit1"
         Me.TextEdit1.Size = New System.Drawing.Size(401, 20)
         Me.TextEdit1.TabIndex = 97
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.SimpleButton2.Appearance.ForeColor = System.Drawing.Color.Green
+        Me.SimpleButton2.Appearance.Options.UseFont = True
+        Me.SimpleButton2.Appearance.Options.UseForeColor = True
+        Me.SimpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
+        Me.SimpleButton2.Location = New System.Drawing.Point(161, 76)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(56, 20)
+        Me.SimpleButton2.TabIndex = 96
+        Me.SimpleButton2.Text = "Path"
         '
         'CheckEdit1
         '
@@ -210,20 +224,6 @@ Partial Class FrmParameter
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.SimpleButton2.Appearance.ForeColor = System.Drawing.Color.Green
-        Me.SimpleButton2.Appearance.Options.UseFont = True
-        Me.SimpleButton2.Appearance.Options.UseForeColor = True
-        Me.SimpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
-        Me.SimpleButton2.Location = New System.Drawing.Point(161, 76)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(56, 20)
-        Me.SimpleButton2.TabIndex = 96
-        Me.SimpleButton2.Text = "Path"
         '
         'BunifuGradientPanel2
         '

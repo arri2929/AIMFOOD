@@ -35,11 +35,11 @@ Partial Class FrmLokasi
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel10 = New System.Windows.Forms.Panel()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.BunifuGradientPanel2 = New ns1.BunifuGradientPanel()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.BunifuGradientPanel2 = New ns1.BunifuGradientPanel()
         Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit5 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit6 = New DevExpress.XtraEditors.TextEdit()
@@ -229,31 +229,6 @@ Partial Class FrmLokasi
         Me.LabelControl1.TabIndex = 118
         Me.LabelControl1.Text = "Warehouse"
         '
-        'PanelControl1
-        '
-        Me.PanelControl1.Controls.Add(Me.GridControl1)
-        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelControl1.Location = New System.Drawing.Point(0, 221)
-        Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(827, 280)
-        Me.PanelControl1.TabIndex = 109
-        '
-        'BunifuGradientPanel2
-        '
-        Me.BunifuGradientPanel2.BackgroundImage = CType(resources.GetObject("BunifuGradientPanel2.BackgroundImage"), System.Drawing.Image)
-        Me.BunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BunifuGradientPanel2.Controls.Add(Me.LabelControl89)
-        Me.BunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.DarkGreen
-        Me.BunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.White
-        Me.BunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.Green
-        Me.BunifuGradientPanel2.GradientTopRight = System.Drawing.Color.White
-        Me.BunifuGradientPanel2.Location = New System.Drawing.Point(0, 0)
-        Me.BunifuGradientPanel2.Name = "BunifuGradientPanel2"
-        Me.BunifuGradientPanel2.Quality = 10
-        Me.BunifuGradientPanel2.Size = New System.Drawing.Size(827, 43)
-        Me.BunifuGradientPanel2.TabIndex = 108
-        '
         'LabelControl2
         '
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
@@ -283,6 +258,31 @@ Partial Class FrmLokasi
         Me.LabelControl4.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl4.TabIndex = 121
         Me.LabelControl4.Text = "Coloum"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.GridControl1)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 221)
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(827, 280)
+        Me.PanelControl1.TabIndex = 109
+        '
+        'BunifuGradientPanel2
+        '
+        Me.BunifuGradientPanel2.BackgroundImage = CType(resources.GetObject("BunifuGradientPanel2.BackgroundImage"), System.Drawing.Image)
+        Me.BunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BunifuGradientPanel2.Controls.Add(Me.LabelControl89)
+        Me.BunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.DarkGreen
+        Me.BunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.White
+        Me.BunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.Green
+        Me.BunifuGradientPanel2.GradientTopRight = System.Drawing.Color.White
+        Me.BunifuGradientPanel2.Location = New System.Drawing.Point(0, 0)
+        Me.BunifuGradientPanel2.Name = "BunifuGradientPanel2"
+        Me.BunifuGradientPanel2.Quality = 10
+        Me.BunifuGradientPanel2.Size = New System.Drawing.Size(827, 43)
+        Me.BunifuGradientPanel2.TabIndex = 108
         '
         'TextEdit4
         '

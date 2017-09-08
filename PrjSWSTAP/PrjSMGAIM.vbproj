@@ -210,6 +210,12 @@
     <Compile Include="FrmLokasi.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmLoV.designer.vb">
+      <DependentUpon>FrmLoV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLoV.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmMain.Designer.vb">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </Compile>
@@ -220,6 +226,12 @@
       <DependentUpon>FrmParameter.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmParameter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPenerimaanBarang.designer.vb">
+      <DependentUpon>FrmPenerimaanBarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPenerimaanBarang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmRoleAccesRight.Designer.vb">
@@ -354,11 +366,17 @@
     <EmbeddedResource Include="FrmLokasi.resx">
       <DependentUpon>FrmLokasi.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoV.resx">
+      <DependentUpon>FrmLoV.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmParameter.resx">
       <DependentUpon>FrmParameter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPenerimaanBarang.resx">
+      <DependentUpon>FrmPenerimaanBarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRoleAccesRight.resx">
       <DependentUpon>FrmRoleAccesRight.vb</DependentUpon>

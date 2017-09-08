@@ -58,6 +58,7 @@ Public Class FrmMain
                         End If
                     Next
                     If IsNothing(FormByName(GetFrmName(Frm))) = False Then
+                        nMENUMAIN = Frm.ToString
                         FrmChildShow(FormByName(GetFrmName(Frm)))
                     End If
 
@@ -104,10 +105,13 @@ Public Class FrmMain
                         Dim Item As NavBarItem = NavBarControl1.Items(IT)
                         ' perform some operations on an item here
                         If Item.Caption.ToString <> "EXIT" Then NavBarControl1.Items(IT).Visible = False  'BIKIN VISIBEL ITEM
+
                     Next
+
                     If CurrGroup.Caption.ToString <> "HOME" Then NavBarControl1.Groups(I).Visible = False 'BIKIN VISIBLE GROUP
                 Next
             Next
+            nMENUMAIN = NavBarControl1.CanSelect.ToString()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally

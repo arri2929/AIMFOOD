@@ -132,6 +132,9 @@ Module ModuleSWS
 
     Public StatusSite As Boolean = False
 
+    Public nMENUMAIN As String = ""
+
+    Public LHeader, LSQL, LField, ValueLOV As String
     Delegate Sub SetTextCallback(ByVal [text] As String) 'Added to prevent threading errors during receiveing of data
 
 #Region "General Config"
@@ -158,6 +161,10 @@ Module ModuleSWS
         'parameter
         singgeleForm = If(My.Settings.SinggleFrmActive = 1, True, False)
         pathimage = My.Settings.PathImage
+
+
+
+
     End Sub
 
 #End Region
@@ -261,7 +268,14 @@ Module ModuleSWS
         frm.ShowDialog()
         SplashScreenManager.CloseDefaultWaitForm()
     End Sub
-
+    Public Function FrmShowLOV(frm As Form, LSQL As String, Lfield As String, Header As String) As String
+        LHeader = Header
+        ValueLOV = ""
+        FrmShowLOV = ""
+        frm.ShowDialog()
+        FrmShowLOV = ValueLOV
+        Return FrmShowLOV
+    End Function
     Public Function getListItem(ByRef lst As ListView, ByVal i As Integer) As String
         On Error Resume Next
         Dim tt As String
